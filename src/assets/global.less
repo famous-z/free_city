@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+}
+a{
+    
+    color: #686868;
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+/* a下划线动态 */
+.swiper-line:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    bottom: -3px;
+    height: 3px;
+    opacity: 0;
+    background-color: #dc6103;
+    transition: all .2s;
+}
+.swiper-line:hover:after {
+    left: 1%;
+    right: 1%;
+    opacity: 1;
+    transition: all .2s;
+}
+.swiper-line {
+    text-decoration: none;
+    color: #686868;
+    position: relative;
+}
+.swiper-line:hover {
+    color: #f3782a;
+}
+.swiper-line:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    bottom: -3px;
+    height: 2px;
+    opacity: 0;
+    background-color: #dc6103;
+    transition: all .2s;
+}
+
+body{
+    margin: 0;
+}
+@main-color:#dc6103;
