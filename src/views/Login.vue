@@ -25,7 +25,6 @@ export default {
             // this.$store.commit( 'getUserData',res)
             // console.log(res);
             sessionStorage.setItem('token',this.token)
-            sessionStorage.setItem('userData',JSON.stringify(res))
             this.$router.push('/')
         })
         .catch(err=>{

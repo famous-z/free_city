@@ -143,6 +143,16 @@ export default {
     },
   },
   created() {
+      this.$axios
+        .post("/accesstoken", { accesstoken: '4fd186b7-8937-426f-8610-a82726fcbe0d' })
+        .then((res) => {
+            // this.$store.commit( 'getUserData',res)
+            // console.log(res);
+            sessionStorage.setItem('userData',JSON.stringify(res))
+        })
+
+
+
     // 给vuex添加 userData 数据
     this.$store.commit(
       "getUserData",

@@ -33,7 +33,10 @@
           >未读消息</router-link
         >
       </li>
-      <li><span class="swiper-line" @click="cancle">注销</span></li>
+      <li>
+        <span v-if="token" class="swiper-line" @click="cancle">注销</span>
+        <span v-else class="swiper-line" @click="cancle">登录</span>
+      </li>
     </ul>
   </header>
 </template>
@@ -41,11 +44,28 @@
 <script>
 export default {
   name: "Head",
+  data() {
+    return {
+      token: "",
+    };
+  },
+  created() {
+    this.token = sessionStorage.getItem("token");
+  },
+  watch: {
+    '$route.params':{
+      handler(){
+        this.token=sessionStorage.getItem('token')
+      }
+    }
+  },
   methods: {
     cancle() {
-      sessionStorage.clear()
-      this.$router.push('/login')
-    }
+      if (this.token) {
+        sessionStorage.clear();
+      }
+      this.$router.push("/login");
+    },
   },
 };
 </script>

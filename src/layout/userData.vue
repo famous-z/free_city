@@ -8,7 +8,7 @@
       </template>
 
       <template #content>
-        <div class="content" v-if="$store.state.userData">
+        <div class="content" v-if="$store.state.userData && token">
           <div class="user">
             <router-link
               :to="{
@@ -28,6 +28,12 @@
           <br />
           <span class="sign">这家伙很懒,什么个性签名都没有留下。</span>
         </div>
+        <div class="content" v-else>
+          <!-- <el-button type="primary"><router-link style="color: white" to="login">登录</router-link></el-button> -->
+          <router-link class="singIn" to="login" tag="button">登录</router-link>
+          <p>点击“登录”获得更好的体验</p>
+        </div>
+
       </template>
     </panel>
   </div>
@@ -39,11 +45,13 @@ export default {
   components: { panel },
   data() {
     return {
-      userData: ''
+      userData: '',
+      token:''
     }
   },
   created() {
     this.userData=JSON.parse(sessionStorage.getItem("userData"))
+    this.token=sessionStorage.getItem('token')
   },
 };
 </script>
@@ -62,6 +70,14 @@ export default {
     padding: 10px 0 0 10px;
     height: 200px;
     background-color: rgb(247, 243, 243);
+    .singIn{
+      margin-left: 32%;
+      width: 88px;
+      height: 40px;
+    }
+    p{
+      text-align: center;
+    }
     .user {
       display: flex;
       .userName {
